@@ -26,6 +26,14 @@
             z-index: 10;
         }
 
+        .card img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 3px solid #ff9a9e;
+        }
+
         button {
             padding: 12px 25px;
             font-size: 18px;
@@ -44,10 +52,10 @@
         }
 
         #msg {
-            font-size: 22px;
+            font-size: 20px;
             color: #555;
             margin-top: 20px;
-            min-height: 30px;
+            min-height: 60px;
             font-weight: 500;
             transition: opacity 0.5s ease-in-out;
         }
@@ -69,6 +77,8 @@
 <body>
 
     <div class="card">
+        <img src="lovephoto.jpg" alt="Our Photo">
+        
         <h1>Hey My Love ❤️</h1>
         <p>Click the button for a little surprise</p>
         <button onclick="next()">Click Me</button>
@@ -77,8 +87,11 @@
 
     <script>
         const messages = [
-            "I love you pookie Panda 😊",
-            "Thanks for giving me little anaaya ❤️",
+            "I love u, Pookie Panda! 🐼",
+            "I love the beautiful daughter you gave me, Anaaya ❤️",
+            "chess.com gave me my life and wife tooo ♟️",
+            "I love your smile 😊",
+            "You make my life better ❤️",
             "I miss you every second 🥺",
             "You're my favorite person 💕",
             "Every day is better with you 🌟",
@@ -87,16 +100,15 @@
 
         function next() {
             const msgElement = document.getElementById("msg");
-            msgElement.style.opacity = 0; // Fade out
+            msgElement.style.opacity = 0; 
             
             setTimeout(() => {
                 let random = Math.floor(Math.random() * messages.length);
                 msgElement.innerText = messages[random];
-                msgElement.style.opacity = 1; // Fade in
+                msgElement.style.opacity = 1; 
             }, 500);
         }
 
-        // Add floating hearts
         function createHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = '❤️';

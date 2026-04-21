@@ -1,42 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>For My Love ❤️</title>
-<style>
-body {
-    text-align: center;
-    font-family: Arial;
-    background: pink;
-}
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-}
-</style>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
 
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 80%;
+            z-index: 10;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #ff6b81;
+        }
+
+        #msg {
+            font-size: 22px;
+            color: #555;
+            margin-top: 20px;
+            min-height: 30px;
+            font-weight: 500;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff4757;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
 <body>
 
-<h1>Hey My Love ❤️</h1>
-<p>Click below for a surprise</p>
+    <div class="card">
+        <h1>Hey My Love ❤️</h1>
+        <p>Click the button for a little surprise</p>
+        <button onclick="next()">Click Me</button>
+        <p id="msg"></p>
+    </div>
 
-<button onclick="next()">Click Me</button>
+    <script>
+        const messages = [
+            "I love you pookie Panda 😊",
+            "Thanks for giving me little anaaya ❤️",
+            "I miss you every second 🥺",
+            "You're my favorite person 💕",
+            "Every day is better with you 🌟",
+            "You are the best thing that happened to me ✨"
+        ];
 
-<p id="msg"></p>
+        function next() {
+            const msgElement = document.getElementById("msg");
+            msgElement.style.opacity = 0; // Fade out
+            
+            setTimeout(() => {
+                let random = Math.floor(Math.random() * messages.length);
+                msgElement.innerText = messages[random];
+                msgElement.style.opacity = 1; // Fade in
+            }, 500);
+        }
 
-<script>
-let messages = [
-"I love you Pookie panda 😊",
-"Thnks for giving little Anaaya ❤️",
-"I miss you every second 🥺",
-"Tum theek to mai theek so always be happy 💕"
-];
-
-function next() {
-    let random = Math.floor(Math.random() * messages.length);
-    document.getElementById("msg").innerText = messages[random];
-}
-</script>
-
+        // Add floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 600);
+    </script>
 </body>
 </html>

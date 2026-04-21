@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Love ❤️</title>
+<style>
+body {
+    text-align: center;
+    font-family: Arial;
+    background: pink;
+}
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Hey My Love ❤️</h1>
+<p>Click below for a surprise</p>
+
+<button onclick="next()">Click Me</button>
+
+<p id="msg"></p>
+
+<script>
+let messages = [
+"I love you Pookie panda 😊",
+"Thnks for giving little Anaaya ❤️",
+"I miss you every second 🥺",
+"Tum theek to mai theek so always be happy 💕"
+];
+
+function next() {
+    let random = Math.floor(Math.random() * messages.length);
+    document.getElementById("msg").innerText = messages[random];
+}
+</script>
+
+</body>
+</html>
